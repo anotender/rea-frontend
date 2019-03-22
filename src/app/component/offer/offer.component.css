@@ -1,0 +1,22 @@
+.thumbnail {
+  width: 100%;
+  height: 15vh;
+  object-fit: cover;
+}
+
+.offer {
+  box-shadow: 0 0 20px lightgrey;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 2vh;
+  transition: box-shadow 1s;
+}
+
+.offer:hover {
+  box-shadow: 0 0 25px gray;
+}
+
+.no-side-padding {
+  padding-left: 0;
+  padding-right: 0;
+}

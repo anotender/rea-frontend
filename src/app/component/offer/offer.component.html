@@ -6,22 +6,26 @@
   <div class="col-md-9">
     <div class="row">
       <div class="col-md-10">
-        {{offer.title}}
+        <p class="h4">{{offer.title}}</p>
       </div>
       <div class="col-md-2">
-        {{offer.price}}
+        <p class="h4">{{offer.price}} zł</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        {{offer.address}}
-      </div>
-      <div class="col-md-4">
-        {{offer.numberOfRooms}}
-      </div>
-      <div class="col-md-4">
-        {{offer.area}}
-      </div>
-    </div>
+    <table>
+      <tbody>
+      <tr>
+        <td>Adres:</td>
+        <td>{{offer.address}}</td>
+      <tr>
+        <td>Liczba pokoi:</td>
+        <td>{{offer.numberOfRooms}}</td>
+      </tr>
+      <tr>
+        <td>Powierzchnia:</td>
+        <td>{{offer.area}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -1,9 +1,12 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {OffersComponent} from "./component/offers/offers.component";
+import {StatisticsComponent} from "./component/statistics/statistics.component";
 
 const routes: Routes = [
-  {path: 'offers', component: OffersComponent}
+  {path: 'offers/:offerType', component: OffersComponent},
+  {path: 'statistics', component: StatisticsComponent},
+  {path: '**', component: StatisticsComponent}
 ];
 
 @NgModule({

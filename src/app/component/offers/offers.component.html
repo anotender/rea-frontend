@@ -1,6 +1,61 @@
 <div class="row">
-  <div class="col-md-3">Filters</div>
+  <div class="col-md-3">
+    <form>
+      <div class="form-row">
+        <div class="form-group col">
+          <input type="text" class="form-control" id="address" placeholder="Address" [(ngModel)]="addressSearchText"
+                 [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <input type="number" class="form-control" id="minPrice" placeholder="Min price" [(ngModel)]="minPrice"
+                 [ngModelOptions]="{standalone: true}" min="0">
+        </div>
+        <div class="form-group col">
+          <input type="number" class="form-control" id="maxPrice" placeholder="Max price" [(ngModel)]="maxPrice"
+                 [ngModelOptions]="{standalone: true}" min="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <input type="number" class="form-control" id="minArea" placeholder="Min area" [(ngModel)]="minArea"
+                 [ngModelOptions]="{standalone: true}" min="0">
+        </div>
+        <div class="form-group col">
+          <input type="number" class="form-control" id="maxArea" placeholder="Max area" [(ngModel)]="maxArea"
+                 [ngModelOptions]="{standalone: true}" min="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <ng-select
+            [items]="propertyTypes"
+            placeholder="Select property type"
+            [(ngModel)]="selectedPropertyType"
+            [ngModelOptions]="{standalone: true}">
+          </ng-select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <ng-select
+            [items]="vendors"
+            [multiple]="true"
+            [closeOnSelect]="false"
+            [clearOnBackspace]="false"
+            placeholder="Select vendors"
+            [(ngModel)]="selectedVendors"
+            [ngModelOptions]="{standalone: true}">
+          </ng-select>
+        </div>
+      </div>
+    </form>
+  </div>
   <div class="col-md-9">
-    <app-offer *ngFor="let offer of offers" [offer]="offer" (click)="openOffer(offer)"></app-offer>
+    <app-offer
+      *ngFor="let offer of offers | propertyTypeFilter: selectedPropertyType | minPriceFilter: minPrice | maxPriceFilter: maxPrice | minAreaFilter: minArea | maxAreaFilter: maxArea | addressFilter: addressSearchText | vendorFilter: selectedVendors | paginate: { itemsPerPage: 10, currentPage: currentPage } "
+      [offer]="offer" (click)="openOffer(offer)"></app-offer>
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
   </div>
 </div>

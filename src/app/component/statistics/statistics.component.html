@@ -8,5 +8,25 @@
                           [labels]="true"></ngx-charts-pie-chart>
   </div>
 </div>
-<app-offer-and-property-statistics *ngFor="let s of countryStatistics.statisticsByOfferAndPropertyType"
-                                   [statistics]="s"></app-offer-and-property-statistics>
+<div class="accordion" id="statisticsByOfferAndPropertyType">
+  <div class="card" *ngFor="let s of currentCountryStatistics.statisticsByOfferAndPropertyType; let i = index">
+    <div class="card-header" id="statisticsByOfferAndPropertyTypeHeading{{i}}">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse"
+                [attr.data-target]="'#statisticsByOfferAndPropertyType' + i"
+                aria-expanded="true" [attr.aria-controls]="'statisticsByOfferAndPropertyType' + i">
+          {{s.offerType + '-' + s.propertyType}}
+        </button>
+      </h2>
+    </div>
+
+    <div id="statisticsByOfferAndPropertyType{{i}}" class="collapse"
+         [attr.aria-labelledby]="'statisticsByOfferAndPropertyTypeHeading' + i"
+         data-parent="#statisticsByOfferAndPropertyType">
+      <div class="card-body">
+        <app-offer-and-property-statistics [currentStatistics]="s"
+                                           [historicalStatistics]="getHistoricalOfferAndPropertyTypeStatistics(s.offerType, s.propertyType)"></app-offer-and-property-statistics>
+      </div>
+    </div>
+  </div>
+</div>

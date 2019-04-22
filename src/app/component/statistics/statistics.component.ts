@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CountryStatisticsService} from "../../service/country-statistics.service";
-import {CountryStatistics} from "../../model/statistics.model";
+import {CountryStatistics, StatisticsByOfferAndPropertyType} from "../../model/statistics.model";
 
 @Component({
   selector: 'app-statistics',
@@ -11,19 +11,32 @@ export class StatisticsComponent implements OnInit {
 
   numberOfOffersByOfferType: any[] = [];
   numberOfOffersByPropertyType: any[] = [];
-  countryStatistics: CountryStatistics;
+  currentCountryStatistics: CountryStatistics;
+  countryStatistics: CountryStatistics[];
 
   constructor(private countryStatisticsService: CountryStatisticsService) {
   }
 
   ngOnInit() {
     this.countryStatisticsService
-      .getTheLatestCountryStatistics()
+      .getCountryStatistics()
       .subscribe(countryStatistics => {
-        this.numberOfOffersByOfferType = this.groupAndCountOffersBy(cs => cs.offerType, countryStatistics);
-        this.numberOfOffersByPropertyType = this.groupAndCountOffersBy(cs => cs.propertyType, countryStatistics);
         this.countryStatistics = countryStatistics;
+        this.currentCountryStatistics = this.countryStatistics[0];
+        this.numberOfOffersByOfferType = this.groupAndCountOffersBy(cs => cs.offerType, this.currentCountryStatistics);
+        this.numberOfOffersByPropertyType = this.groupAndCountOffersBy(cs => cs.propertyType, this.currentCountryStatistics);
       })
+  }
+
+  getHistoricalOfferAndPropertyTypeStatistics(offerType: string, propertyType: string): Map<Date, StatisticsByOfferAndPropertyType> {
+    let historicalStatistics: Map<Date, StatisticsByOfferAndPropertyType> = new Map<Date, StatisticsByOfferAndPropertyType>();
+
+    this.countryStatistics.forEach(cs => historicalStatistics.set(
+      cs.calculationDate,
+      cs.statisticsByOfferAndPropertyType.find(s => s.offerType === offerType && s.propertyType === propertyType)
+    ));
+
+    return historicalStatistics;
   }
 
   private groupAndCountOffersBy(property: (CountryStatistics) => string, cs: CountryStatistics): any[] {

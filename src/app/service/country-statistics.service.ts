@@ -12,11 +12,11 @@ export class CountryStatisticsService {
   constructor(private db: AngularFirestore) {
   }
 
-  getTheLatestCountryStatistics(): Observable<CountryStatistics> {
+  getCountryStatistics(): Observable<CountryStatistics[]> {
     return this.db
-      .collection('countryStatistics', ref => ref.orderBy('calculationDate', 'desc').limit(1))
+      .collection('countryStatistics', ref => ref.orderBy('calculationDate', 'desc'))
       .valueChanges()
-      .pipe(map(stats => stats[0] as CountryStatistics));
+      .pipe(map(response => response as CountryStatistics[]));
   }
 
 }

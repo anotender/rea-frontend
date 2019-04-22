@@ -9,9 +9,6 @@ import {CommonStatistics} from "../../model/statistics.model";
 export class CommonStatisticsComponent implements OnInit {
 
   @Input()
-  public title: string;
-
-  @Input()
   public commonStatistics: CommonStatistics;
 
   constructor() {

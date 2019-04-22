@@ -6,29 +6,77 @@
           <tbody>
           <tr>
             <th>Offer type</th>
-            <td>{{statistics.offerType}}</td>
+            <td>{{currentStatistics.offerType}}</td>
           </tr>
           <tr>
             <th>Property type</th>
-            <td>{{statistics.propertyType}}</td>
+            <td>{{currentStatistics.propertyType}}</td>
           </tr>
           <tr>
             <th>Number of offers</th>
-            <td>{{statistics.numberOfOffers}}</td>
+            <td>{{currentStatistics.numberOfOffers}}</td>
           </tr>
           <tr>
             <th>Average price per square meter</th>
-            <td>{{statistics.averagePricePerSquareMeter}}</td>
+            <td>{{currentStatistics.averagePricePerSquareMeter}}</td>
           </tr>
           </tbody>
         </table>
       </div>
     </div>
-    <app-common-statistics [commonStatistics]="statistics.areaStatistics"
-                           [title]="'Area statistics'"></app-common-statistics>
-    <app-common-statistics [commonStatistics]="statistics.priceStatistics"
-                           [title]="'Price statistics'"></app-common-statistics>
-    <app-common-statistics [commonStatistics]="statistics.numberOfRoomsStatistics"
-                           [title]="'Number of rooms statistics'"></app-common-statistics>
+    <div class="accordion" id="statistics">
+      <div class="card">
+        <div class="card-header" id="areaStatisticsHeading">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#areaStatistics"
+                    aria-expanded="true" aria-controls="areaStatistics">
+              Area statistics
+            </button>
+          </h2>
+        </div>
+
+        <div id="areaStatistics" class="collapse" aria-labelledby="areaStatisticsHeading"
+             data-parent="#statistics">
+          <div class="card-body">
+            <app-common-statistics [commonStatistics]="currentStatistics.areaStatistics"></app-common-statistics>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="priceStatisticsHeading">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#priceStatistics"
+                    aria-expanded="true" aria-controls="priceStatistics">
+              Price statistics
+            </button>
+          </h2>
+        </div>
+
+        <div id="priceStatistics" class="collapse" aria-labelledby="priceStatisticsHeading"
+             data-parent="#statistics">
+          <div class="card-body">
+            <app-common-statistics [commonStatistics]="currentStatistics.priceStatistics"></app-common-statistics>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="numberOfRoomsStatisticsHeading">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#numberOfRoomsStatistics"
+                    aria-expanded="true" aria-controls="numberOfRoomsStatistics">
+              Number of rooms statistics
+            </button>
+          </h2>
+        </div>
+
+        <div id="numberOfRoomsStatistics" class="collapse" aria-labelledby="numberOfRoomsStatisticsHeading"
+             data-parent="#statistics">
+          <div class="card-body">
+            <app-common-statistics
+              [commonStatistics]="currentStatistics.numberOfRoomsStatistics"></app-common-statistics>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

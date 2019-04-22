@@ -9,7 +9,10 @@ import {StatisticsByOfferAndPropertyType} from "../../model/statistics.model";
 export class OfferAndPropertyTypeStatisticsComponent implements OnInit {
 
   @Input()
-  public statistics: StatisticsByOfferAndPropertyType;
+  public currentStatistics: StatisticsByOfferAndPropertyType;
+
+  @Input()
+  public historicalStatistics: Map<Date, StatisticsByOfferAndPropertyType>;
 
   constructor() {
   }

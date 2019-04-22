@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-hover">
+          <tbody>
+          <tr>
+            <th>Offer type</th>
+            <td>{{statistics.offerType}}</td>
+          </tr>
+          <tr>
+            <th>Property type</th>
+            <td>{{statistics.propertyType}}</td>
+          </tr>
+          <tr>
+            <th>Number of offers</th>
+            <td>{{statistics.numberOfOffers}}</td>
+          </tr>
+          <tr>
+            <th>Average price per square meter</th>
+            <td>{{statistics.averagePricePerSquareMeter}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <app-common-statistics [commonStatistics]="statistics.areaStatistics"
+                           [title]="'Area statistics'"></app-common-statistics>
+    <app-common-statistics [commonStatistics]="statistics.priceStatistics"
+                           [title]="'Price statistics'"></app-common-statistics>
+    <app-common-statistics [commonStatistics]="statistics.numberOfRoomsStatistics"
+                           [title]="'Number of rooms statistics'"></app-common-statistics>
+  </div>
+</div>

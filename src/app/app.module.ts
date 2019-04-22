@@ -20,6 +20,10 @@ import {MinAreaFilterPipe} from "./pipe/min-area-filter.pipe";
 import {MaxAreaFilterPipe} from "./pipe/max-area-filter.pipe";
 import {PropertyTypeFilterPipe} from "./pipe/property-type-filter.pipe";
 import {VendorFilterPipe} from "./pipe/vendor-filter.pipe";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { OfferAndPropertyTypeStatisticsComponent } from './component/offer-and-property-statistics/offer-and-property-type-statistics.component';
+import { CommonStatisticsComponent } from './component/common-statistics/common-statistics.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +38,16 @@ import {VendorFilterPipe} from "./pipe/vendor-filter.pipe";
     MinAreaFilterPipe,
     MaxAreaFilterPipe,
     PropertyTypeFilterPipe,
-    VendorFilterPipe
+    VendorFilterPipe,
+    OfferAndPropertyTypeStatisticsComponent,
+    CommonStatisticsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     NgxPaginationModule,
+    NgxChartsModule,
     NgSelectModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -1,3 +1,12 @@
-<p>
-  statistics works!
-</p>
+<div class="row" style="height: 50vh;">
+  <div class="col-md-6">
+    <ngx-charts-pie-chart [results]="numberOfOffersByOfferType"
+                          [labels]="true"></ngx-charts-pie-chart>
+  </div>
+  <div class="col-md-6" style="display: grid;">
+    <ngx-charts-pie-chart [results]="numberOfOffersByPropertyType"
+                          [labels]="true"></ngx-charts-pie-chart>
+  </div>
+</div>
+<app-offer-and-property-statistics *ngFor="let s of countryStatistics.statisticsByOfferAndPropertyType"
+                                   [statistics]="s"></app-offer-and-property-statistics>

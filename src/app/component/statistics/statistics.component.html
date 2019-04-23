@@ -8,7 +8,7 @@
                           [labels]="true"></ngx-charts-pie-chart>
   </div>
 </div>
-<div class="accordion" id="statisticsByOfferAndPropertyType">
+<div class="accordion" id="statisticsByOfferAndPropertyType" *ngIf="currentCountryStatistics">
   <div class="card" *ngFor="let s of currentCountryStatistics.statisticsByOfferAndPropertyType; let i = index">
     <div class="card-header" id="statisticsByOfferAndPropertyTypeHeading{{i}}">
       <h2 class="mb-0">
@@ -19,7 +19,6 @@
         </button>
       </h2>
     </div>
-
     <div id="statisticsByOfferAndPropertyType{{i}}" class="collapse"
          [attr.aria-labelledby]="'statisticsByOfferAndPropertyTypeHeading' + i"
          data-parent="#statisticsByOfferAndPropertyType">

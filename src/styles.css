@@ -2,3 +2,7 @@
 body {
   background-color: whitesmoke !important;
 }
+
+.clickable {
+  cursor: pointer;
+}

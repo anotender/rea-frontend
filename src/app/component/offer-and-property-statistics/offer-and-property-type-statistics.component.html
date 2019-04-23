@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <table class="table table-hover">
           <tbody>
           <tr>
@@ -12,16 +12,23 @@
             <th>Property type</th>
             <td>{{currentStatistics.propertyType}}</td>
           </tr>
-          <tr>
+          <tr class="clickable" (click)="showNumberOfOffersHistoricalStatistics()">
             <th>Number of offers</th>
             <td>{{currentStatistics.numberOfOffers}}</td>
           </tr>
-          <tr>
+          <tr class="clickable" (click)="showAveragePricePerSquareMeterHistoricalStatistics()">
             <th>Average price per square meter</th>
             <td>{{currentStatistics.averagePricePerSquareMeter}}</td>
           </tr>
           </tbody>
         </table>
+      </div>
+      <div class="col-md-6" *ngIf="historicalStatisticsData.length !== 0">
+        <ngx-charts-line-chart [results]="historicalStatisticsData"
+                               timeline="true"
+                               xAxis="true"
+                               yAxis="true"
+                               autoScale="true"></ngx-charts-line-chart>
       </div>
     </div>
     <div class="accordion" id="statistics">

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StatisticsByOfferAndPropertyType} from "../../model/statistics.model";
+import {CommonStatistics, StatisticsByOfferAndPropertyType} from "../../model/statistics.model";
 
 @Component({
   selector: 'app-offer-and-property-statistics',
@@ -14,23 +14,39 @@ export class OfferAndPropertyTypeStatisticsComponent implements OnInit {
   @Input()
   public historicalStatistics: Map<Date, StatisticsByOfferAndPropertyType>;
 
+  public areaHistoricalStatistics: Map<Date, CommonStatistics>;
+
+  public priceHistoricalStatistics: Map<Date, CommonStatistics>;
+
+  public numberOfRoomsHistoricalStatistics: Map<Date, CommonStatistics>;
+
   public historicalStatisticsData: any[] = [];
 
-  constructor() {
-  }
-
   ngOnInit() {
+    this.areaHistoricalStatistics = this.getHistoricalCommonStatisticsFor(s => s.areaStatistics);
+    this.priceHistoricalStatistics = this.getHistoricalCommonStatisticsFor(s => s.priceStatistics);
+    this.numberOfRoomsHistoricalStatistics = this.getHistoricalCommonStatisticsFor(s => s.numberOfRoomsStatistics);
   }
 
   showNumberOfOffersHistoricalStatistics() {
-    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.numberOfOffers, 'Number of offers')
+    this.historicalStatisticsData = this.getHistoricalStatisticsDataFor(s => s.numberOfOffers, 'Number of offers')
   }
 
   showAveragePricePerSquareMeterHistoricalStatistics() {
-    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.averagePricePerSquareMeter, 'Average price per square meter')
+    this.historicalStatisticsData = this.getHistoricalStatisticsDataFor(s => s.averagePricePerSquareMeter, 'Average price per square meter')
   }
 
-  private getHistoricalStatisticsData(property: (StatisticsByOfferAndPropertyType) => number, propertyName: string): any[] {
+  private getHistoricalCommonStatisticsFor(commonStatisticsProperty: (StatisticsByOfferAndPropertyType) => CommonStatistics): Map<Date, CommonStatistics> {
+    let historicalCommonStatistics: Map<Date, CommonStatistics> = new Map<Date, CommonStatistics>();
+
+    this.historicalStatistics.forEach((s, d) => {
+      historicalCommonStatistics.set(d, commonStatisticsProperty(s));
+    });
+
+    return historicalCommonStatistics;
+  }
+
+  private getHistoricalStatisticsDataFor(property: (StatisticsByOfferAndPropertyType) => number, propertyName: string): any[] {
     let historicalStatisticsSeries: any[] = [];
 
     this.historicalStatistics.forEach((s, d) => {

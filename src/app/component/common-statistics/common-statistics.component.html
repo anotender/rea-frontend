@@ -2,31 +2,38 @@
   <div class="col-md-6">
     <table class="table table-hover">
       <tbody>
-      <tr>
+      <tr class="clickable" (click)="showAverageHistoricalStatistics()">
         <th>Average</th>
         <td>{{commonStatistics.average}}</td>
       </tr>
-      <tr>
+      <tr class="clickable" (click)="showMinHistoricalStatistics()">
         <th>Min</th>
         <td>{{commonStatistics.min}}</td>
       </tr>
-      <tr>
+      <tr class="clickable" (click)="showMaxHistoricalStatistics()">
         <th>Max</th>
         <td>{{commonStatistics.max}}</td>
       </tr>
-      <tr>
+      <tr class="clickable" (click)="showMedianHistoricalStatistics()">
         <th>Median</th>
         <td>{{commonStatistics.median}}</td>
       </tr>
-      <tr>
+      <tr class="clickable" (click)="showStandardDeviationHistoricalStatistics()">
         <th>Standard deviation</th>
         <td>{{commonStatistics.standardDeviation}}</td>
       </tr>
-      <tr>
+      <tr class="clickable" (click)="showVarianceHistoricalStatistics()">
         <th>Variance</th>
         <td>{{commonStatistics.variance}}</td>
       </tr>
       </tbody>
     </table>
+  </div>
+  <div class="col-md-6" *ngIf="historicalStatisticsData.length !== 0">
+    <ngx-charts-line-chart [results]="historicalStatisticsData"
+                           timeline="true"
+                           xAxis="true"
+                           yAxis="true"
+                           autoScale="true"></ngx-charts-line-chart>
   </div>
 </div>

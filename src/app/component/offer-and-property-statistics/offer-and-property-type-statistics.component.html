@@ -45,7 +45,8 @@
         <div id="areaStatistics" class="collapse" aria-labelledby="areaStatisticsHeading"
              data-parent="#statistics">
           <div class="card-body">
-            <app-common-statistics [commonStatistics]="currentStatistics.areaStatistics"></app-common-statistics>
+            <app-common-statistics [commonStatistics]="currentStatistics.areaStatistics"
+                                   [historicalStatistics]="areaHistoricalStatistics"></app-common-statistics>
           </div>
         </div>
       </div>
@@ -62,7 +63,8 @@
         <div id="priceStatistics" class="collapse" aria-labelledby="priceStatisticsHeading"
              data-parent="#statistics">
           <div class="card-body">
-            <app-common-statistics [commonStatistics]="currentStatistics.priceStatistics"></app-common-statistics>
+            <app-common-statistics [commonStatistics]="currentStatistics.priceStatistics"
+                                   [historicalStatistics]="priceHistoricalStatistics"></app-common-statistics>
           </div>
         </div>
       </div>
@@ -79,8 +81,8 @@
         <div id="numberOfRoomsStatistics" class="collapse" aria-labelledby="numberOfRoomsStatisticsHeading"
              data-parent="#statistics">
           <div class="card-body">
-            <app-common-statistics
-              [commonStatistics]="currentStatistics.numberOfRoomsStatistics"></app-common-statistics>
+            <app-common-statistics [commonStatistics]="currentStatistics.numberOfRoomsStatistics"
+                                   [historicalStatistics]="numberOfRoomsHistoricalStatistics"></app-common-statistics>
           </div>
         </div>
       </div>

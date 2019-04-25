@@ -1,0 +1,59 @@
+<div *ngIf="!isRegionSelected()">
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item active">Countries</li>
+        <li class="list-group-item clickable" *ngFor="let country of countries" (click)="selectCountry(country)">
+          {{country}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item active">Cities</li>
+        <li class="list-group-item clickable" *ngFor="let city of cities" (click)="selectCity(city)">
+          {{city}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div *ngIf="isRegionSelected()">
+  <div class="row">
+    <blockquote class="blockquote text-right">
+      <p class="h1">Showing statistics for {{selectedRegion}}</p>
+      <footer class="blockquote-footer clickable" (click)="selectedRegion = null">Back</footer>
+    </blockquote>
+  </div>
+  <div class="row" style="height: 50vh;">
+    <div class="col-md-6">
+      <ngx-charts-pie-chart [results]="numberOfOffersByOfferType"
+                            [labels]="true"></ngx-charts-pie-chart>
+    </div>
+    <div class="col-md-6" style="display: grid;">
+      <ngx-charts-pie-chart [results]="numberOfOffersByPropertyType"
+                            [labels]="true"></ngx-charts-pie-chart>
+    </div>
+  </div>
+  <div class="accordion" id="statisticsByOfferAndPropertyType" *ngIf="currentRegionStatistics">
+    <div class="card" *ngFor="let s of currentRegionStatistics.statisticsByOfferAndPropertyType; let i = index">
+      <div class="card-header" id="statisticsByOfferAndPropertyTypeHeading{{i}}">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse"
+                  [attr.data-target]="'#statisticsByOfferAndPropertyType' + i"
+                  aria-expanded="true" [attr.aria-controls]="'statisticsByOfferAndPropertyType' + i">
+            {{s.offerType + '-' + s.propertyType}}
+          </button>
+        </h2>
+      </div>
+      <div id="statisticsByOfferAndPropertyType{{i}}" class="collapse"
+           [attr.aria-labelledby]="'statisticsByOfferAndPropertyTypeHeading' + i"
+           data-parent="#statisticsByOfferAndPropertyType">
+        <div class="card-body">
+          <app-offer-and-property-statistics [currentStatistics]="s"
+                                             [historicalStatistics]="getHistoricalOfferAndPropertyTypeStatistics(s.offerType, s.propertyType)"></app-offer-and-property-statistics>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

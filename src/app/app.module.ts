@@ -10,7 +10,7 @@ import {AngularFireModule} from "@angular/fire";
 import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {environment} from "../environments/environment";
 import {NgxPaginationModule} from "ngx-pagination";
-import {StatisticsComponent} from './component/statistics/statistics.component';
+import {RegionStatisticsComponent} from './component/statistics/region-statistics.component';
 import {NgSelectModule} from "@ng-select/ng-select";
 import {FormsModule} from "@angular/forms";
 import {AddressFilterPipe} from './pipe/address-filter.pipe';
@@ -22,8 +22,8 @@ import {PropertyTypeFilterPipe} from "./pipe/property-type-filter.pipe";
 import {VendorFilterPipe} from "./pipe/vendor-filter.pipe";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { OfferAndPropertyTypeStatisticsComponent } from './component/offer-and-property-statistics/offer-and-property-type-statistics.component';
-import { CommonStatisticsComponent } from './component/common-statistics/common-statistics.component';
+import {OfferAndPropertyTypeStatisticsComponent} from './component/offer-and-property-statistics/offer-and-property-type-statistics.component';
+import {CommonStatisticsComponent} from './component/common-statistics/common-statistics.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { CommonStatisticsComponent } from './component/common-statistics/common-
     NavbarComponent,
     OfferComponent,
     OffersComponent,
-    StatisticsComponent,
+    RegionStatisticsComponent,
     AddressFilterPipe,
     MinPriceFilterPipe,
     MaxPriceFilterPipe,

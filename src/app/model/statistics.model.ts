@@ -17,8 +17,8 @@ export class StatisticsByOfferAndPropertyType {
   averagePricePerSquareMeter: number;
 }
 
-export class CountryStatistics {
-  country: string;
+export class RegionStatistics {
+  region: string;
   totalNumberOfOffers: number;
   statisticsByOfferAndPropertyType: StatisticsByOfferAndPropertyType[];
   calculationDate: Date;

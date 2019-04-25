@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CountryStatisticsService} from "../../service/country-statistics.service";
-import {CountryStatistics, StatisticsByOfferAndPropertyType} from "../../model/statistics.model";
+import {RegionStatistics, StatisticsByOfferAndPropertyType} from "../../model/statistics.model";
 
 @Component({
   selector: 'app-statistics',
@@ -11,8 +11,8 @@ export class StatisticsComponent implements OnInit {
 
   numberOfOffersByOfferType: any[] = [];
   numberOfOffersByPropertyType: any[] = [];
-  currentCountryStatistics: CountryStatistics;
-  countryStatistics: CountryStatistics[];
+  currentCountryStatistics: RegionStatistics;
+  countryStatistics: RegionStatistics[];
 
   constructor(private countryStatisticsService: CountryStatisticsService) {
   }
@@ -39,7 +39,7 @@ export class StatisticsComponent implements OnInit {
     return historicalStatistics;
   }
 
-  private groupAndCountOffersBy(property: (CountryStatistics) => string, cs: CountryStatistics): any[] {
+  private groupAndCountOffersBy(property: (CountryStatistics) => string, cs: RegionStatistics): any[] {
     let groupedOffers: any[] = [];
 
     cs.statisticsByOfferAndPropertyType.forEach(s => {

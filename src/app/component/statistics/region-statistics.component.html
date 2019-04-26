@@ -2,16 +2,18 @@
   <div class="row">
     <div class="col-md-6">
       <ul class="list-group">
-        <li class="list-group-item active">Countries</li>
-        <li class="list-group-item clickable" *ngFor="let country of countries" (click)="selectCountry(country)">
+        <li class="list-group-item list-group-item-secondary">Countries</li>
+        <li class="list-group-item list-group-item-action clickable" *ngFor="let country of countries"
+            (click)="selectCountry(country)">
           {{country}}
         </li>
       </ul>
     </div>
     <div class="col-md-6">
       <ul class="list-group">
-        <li class="list-group-item active">Cities</li>
-        <li class="list-group-item clickable" *ngFor="let city of cities" (click)="selectCity(city)">
+        <li class="list-group-item list-group-item-secondary">Cities</li>
+        <li class="list-group-item list-group-item-action clickable" *ngFor="let city of cities"
+            (click)="selectCity(city)">
           {{city}}
         </li>
       </ul>

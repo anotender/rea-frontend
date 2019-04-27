@@ -20,12 +20,15 @@ export class OfferAndPropertyTypeStatisticsComponent implements OnInit {
 
   public numberOfRoomsHistoricalStatistics: Map<Date, CommonStatistics>;
 
+  public yearOfConstructionHistoricalStatistics: Map<Date, CommonStatistics>;
+
   public historicalStatisticsData: any[] = [];
 
   ngOnInit() {
     this.areaHistoricalStatistics = this.getHistoricalCommonStatisticsFor(s => s.areaStatistics);
     this.priceHistoricalStatistics = this.getHistoricalCommonStatisticsFor(s => s.priceStatistics);
     this.numberOfRoomsHistoricalStatistics = this.getHistoricalCommonStatisticsFor(s => s.numberOfRoomsStatistics);
+    this.yearOfConstructionHistoricalStatistics = this.getHistoricalCommonStatisticsFor(s => s.yearOfConstructionStatistics);
   }
 
   showNumberOfOffersHistoricalStatistics() {
@@ -40,7 +43,10 @@ export class OfferAndPropertyTypeStatisticsComponent implements OnInit {
     let historicalCommonStatistics: Map<Date, CommonStatistics> = new Map<Date, CommonStatistics>();
 
     this.historicalStatistics.forEach((s, d) => {
-      historicalCommonStatistics.set(d, commonStatisticsProperty(s));
+      let cs = commonStatisticsProperty(s);
+      if (cs) {
+        historicalCommonStatistics.set(d, cs);
+      }
     });
 
     return historicalCommonStatistics;

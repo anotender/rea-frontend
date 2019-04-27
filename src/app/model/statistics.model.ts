@@ -14,6 +14,7 @@ export class StatisticsByOfferAndPropertyType {
   areaStatistics: CommonStatistics;
   priceStatistics: CommonStatistics;
   numberOfRoomsStatistics: CommonStatistics;
+  yearOfConstructionStatistics: CommonStatistics;
   averagePricePerSquareMeter: number;
 }
 

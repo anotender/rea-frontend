@@ -21,23 +21,23 @@ export class CommonStatisticsComponent {
   }
 
   showMinHistoricalStatistics() {
-    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.min, 'Average');
+    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.min, 'Min');
   }
 
   showMaxHistoricalStatistics() {
-    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.max, 'Average');
+    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.max, 'Max');
   }
 
   showMedianHistoricalStatistics() {
-    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.median, 'Average');
+    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.median, 'Median');
   }
 
   showStandardDeviationHistoricalStatistics() {
-    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.standardDeviation, 'Average');
+    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.standardDeviation, 'Standard deviation');
   }
 
   showVarianceHistoricalStatistics() {
-    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.variance, 'Average');
+    this.historicalStatisticsData = this.getHistoricalStatisticsData(s => s.variance, 'variance');
   }
 
   private getHistoricalStatisticsData(property: (CommonStatistics) => number, propertyName: string): any[] {

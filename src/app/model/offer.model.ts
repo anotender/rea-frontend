@@ -5,6 +5,8 @@ export class Offer {
   address: string;
   numberOfRooms: number;
   area: number;
+  floor: number;
+  yearOfConstruction: number;
   price: number;
   offerType: string;
   propertyType: string;

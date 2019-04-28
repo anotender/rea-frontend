@@ -24,6 +24,7 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {OfferAndPropertyTypeStatisticsComponent} from './component/offer-and-property-statistics/offer-and-property-type-statistics.component';
 import {CommonStatisticsComponent} from './component/common-statistics/common-statistics.component';
+import { PricePredictionComponent } from './component/price-prediction/price-prediction.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {CommonStatisticsComponent} from './component/common-statistics/common-st
     PropertyTypeFilterPipe,
     VendorFilterPipe,
     OfferAndPropertyTypeStatisticsComponent,
-    CommonStatisticsComponent
+    CommonStatisticsComponent,
+    PricePredictionComponent
   ],
   imports: [
     BrowserModule,

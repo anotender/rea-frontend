@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="offset-md-3 col-md-6">
+    <form>
+      <div class="form-group row">
+        <label for="offerTypeSelect" class="col-md-4 col-form-label">Offer type</label>
+        <div class="col-md-8">
+          <ng-select
+            id="offerTypeSelect"
+            [items]="offerTypes"
+            [clearable]="false"
+            placeholder="Select offer type"
+            [(ngModel)]="offer.offerType"
+            [ngModelOptions]="{standalone: true}">
+          </ng-select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="propertyTypeSelect" class="col-md-4 col-form-label">Property type</label>
+        <div class="col-md-8">
+          <ng-select
+            id="propertyTypeSelect"
+            [items]="propertyTypes"
+            [clearable]="false"
+            placeholder="Select property type"
+            [(ngModel)]="offer.propertyType"
+            [ngModelOptions]="{standalone: true}">
+          </ng-select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="area" class="col-md-4 col-form-label">Area</label>
+        <div class="col-md-8">
+          <input type="number" class="form-control" id="area" placeholder="Area" [(ngModel)]="offer.area"
+                 [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="numberOfRooms" class="col-md-4 col-form-label">Number of rooms</label>
+        <div class="col-md-8">
+          <input type="number" class="form-control" id="numberOfRooms" placeholder="Number of rooms"
+                 [(ngModel)]="offer.numberOfRooms" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="floor" class="col-md-4 col-form-label">Floor</label>
+        <div class="col-md-8">
+          <input type="number" class="form-control" id="floor" placeholder="Floor" [(ngModel)]="offer.floor"
+                 [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="yearOfConstruction" class="col-md-4 col-form-label">Year of construction</label>
+        <div class="col-md-8">
+          <input type="number" class="form-control" id="yearOfConstruction" placeholder="Year of construction"
+                 [(ngModel)]="offer.yearOfConstruction" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="offset-md-4 col-md-8">
+          <button class="btn btn-primary btn-block" (click)="calculatePrice()" [disabled]="!isFormValid()">Predict
+          </button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="predictedPrice" class="col-md-4 col-form-label">Predicted price</label>
+        <div class="col-md-8 input-group">
+          <input type="number" class="form-control" id="predictedPrice" placeholder="Predicted price"
+                 [ngModel]="predictedPrice" [ngModelOptions]="{standalone: true}" [disabled]="true">
+          <div class="input-group-append">
+            <span class="input-group-text">zł</span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

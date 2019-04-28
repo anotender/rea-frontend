@@ -25,11 +25,11 @@ export class OffersComponent implements OnInit {
 
   maxArea: number;
 
-  propertyTypes: string[] = ['House', 'Flat'];
+  propertyTypes: string[] = [];
 
   selectedPropertyType: string;
 
-  vendors: string[] = ['Morizon', 'OtoDom', 'Domiporta'];
+  vendors: string[] = [];
 
   selectedVendors: string[] = [];
 
@@ -38,6 +38,8 @@ export class OffersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.propertyTypes = this.offerService.getPropertyTypes();
+    this.vendors = this.offerService.getVendors();
     this.route.params.subscribe(params => {
       this.offerService
         .getOffersByOfferType(params['offerType'])

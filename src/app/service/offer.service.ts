@@ -17,4 +17,16 @@ export class OfferService {
       .valueChanges()
   }
 
+  getOfferTypes(): string[] {
+    return ["RENT", "SELL"];
+  }
+
+  getPropertyTypes(): string[] {
+    return ["HOUSE", "FLAT"];
+  }
+
+  getVendors(): string[] {
+    return ['Morizon', 'OtoDom', 'Domiporta']
+  }
+
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/firestore";
 import {Offer} from "../model/offer.model";
-import {from, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {PricePredictionCoefficients} from "../model/prediction.model";
 import {map} from "rxjs/operators";
 
@@ -9,36 +9,6 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class PricePredictionService {
-
-  public pricePredictionCoefficients: PricePredictionCoefficients[] = [{
-    propertyType: "FLAT",
-    offerType: "SELL",
-    area: 1,
-    floor: 1,
-    numberOfRooms: 1,
-    yearOfConstruction: 1
-  }, {
-    propertyType: "FLAT",
-    offerType: "RENT",
-    area: 2,
-    floor: 2,
-    numberOfRooms: 2,
-    yearOfConstruction: 2
-  }, {
-    propertyType: "HOUSE",
-    offerType: "SELL",
-    area: 3,
-    floor: 3,
-    numberOfRooms: 3,
-    yearOfConstruction: 3
-  }, {
-    propertyType: "HOUSE",
-    offerType: "RENT",
-    area: 4,
-    floor: 4,
-    numberOfRooms: 4,
-    yearOfConstruction: 4
-  }];
 
   constructor(private db: AngularFirestore) {
   }
@@ -54,8 +24,11 @@ export class PricePredictionService {
   }
 
   private getPricePredictionCoefficients(offerType: string, propertyType: string): Observable<PricePredictionCoefficients> {
-    return from([this.pricePredictionCoefficients
-      .find(c => c.propertyType === propertyType && c.offerType === offerType)]);
+    return this.db
+      .collection('pricePredictionCoefficients', ref => ref.where('offerType', '==', offerType).where('propertyType', '==', propertyType))
+      .valueChanges()
+      .pipe(map(response => response as PricePredictionCoefficients[]))
+      .pipe(map(coefficients => coefficients[0]));
   }
 
 }

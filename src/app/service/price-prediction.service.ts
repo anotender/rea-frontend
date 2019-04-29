@@ -15,12 +15,7 @@ export class PricePredictionService {
 
   calculatePriceForOffer(offer: Offer): Observable<number> {
     return this.getPricePredictionCoefficients(offer.offerType, offer.propertyType)
-      .pipe(map(c => {
-        return c.area * offer.area
-          + c.numberOfRooms * offer.numberOfRooms
-          + c.floor * offer.floor
-          + c.yearOfConstruction * offer.yearOfConstruction;
-      }))
+      .pipe(map(c => this.countOfferPrice(c, offer)));
   }
 
   private getPricePredictionCoefficients(offerType: string, propertyType: string): Observable<PricePredictionCoefficients> {
@@ -29,6 +24,13 @@ export class PricePredictionService {
       .valueChanges()
       .pipe(map(response => response as PricePredictionCoefficients[]))
       .pipe(map(coefficients => coefficients[0]));
+  }
+
+  private countOfferPrice(c: PricePredictionCoefficients, o: Offer): number {
+    return c.area * o.area
+      + c.numberOfRooms * o.numberOfRooms
+      + c.floor * o.floor
+      + c.yearOfConstruction * o.yearOfConstruction;
   }
 
 }

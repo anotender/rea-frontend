@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Offer} from "../../model/offer.model";
 
 @Component({
@@ -6,14 +6,17 @@ import {Offer} from "../../model/offer.model";
   templateUrl: './offer.component.html',
   styleUrls: ['./offer.component.css']
 })
-export class OfferComponent implements OnInit {
+export class OfferComponent {
 
   @Input()
   public offer: Offer;
 
-  constructor() { }
+  isFloorVisible(): boolean {
+    return this.offer.propertyType == 'FLAT' && !!this.offer.floor;
+  }
 
-  ngOnInit() {
+  isYearOfConstructionVisible(): boolean {
+    return !!this.offer.yearOfConstruction && this.offer.yearOfConstruction !== 0;
   }
 
 }

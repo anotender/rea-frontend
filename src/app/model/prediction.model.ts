@@ -5,4 +5,5 @@ export class PricePredictionCoefficients {
   numberOfRooms: number;
   floor: number;
   yearOfConstruction: number;
+  marketType: number;
 }

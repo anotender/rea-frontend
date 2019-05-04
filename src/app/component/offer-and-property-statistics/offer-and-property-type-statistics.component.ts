@@ -57,7 +57,7 @@ export class OfferAndPropertyTypeStatisticsComponent implements OnInit {
 
     this.historicalStatistics.forEach((s, d) => {
       historicalStatisticsSeries.push({
-        name: this.formatDate(d),
+        name: d,
         value: property(s)
       })
     });
@@ -66,10 +66,6 @@ export class OfferAndPropertyTypeStatisticsComponent implements OnInit {
       name: propertyName,
       series: historicalStatisticsSeries
     }];
-  }
-
-  private formatDate(d: Date): string {
-    return d["dayOfMonth"] + ' ' + d["month"] + ' ' + d["year"];
   }
 
 }

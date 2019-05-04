@@ -14,6 +14,8 @@ export class PricePredictionComponent implements OnInit {
 
   public propertyTypes: string[] = [];
 
+  public marketTypes: string[] = [];
+
   public offer: Offer = new Offer();
 
   public predictedPrice: number;
@@ -25,6 +27,7 @@ export class PricePredictionComponent implements OnInit {
   ngOnInit() {
     this.offerTypes = this.offerService.getOfferTypes();
     this.propertyTypes = this.offerService.getPropertyTypes();
+    this.marketTypes = this.offerService.getMarketTypes();
   }
 
   calculatePrice() {
@@ -35,13 +38,13 @@ export class PricePredictionComponent implements OnInit {
 
   isFormValid(): boolean {
     return [
-      this.offer,
+      /*this.offer,
       this.offer.propertyType,
       this.offer.offerType,
       this.offer.area,
       this.offer.numberOfRooms,
       this.offer.floor,
-      this.offer.yearOfConstruction
+      this.offer.yearOfConstruction*/
     ].every(this.isNotEmpty);
   }
 

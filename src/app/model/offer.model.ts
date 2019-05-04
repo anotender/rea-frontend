@@ -10,5 +10,6 @@ export class Offer {
   price: number;
   offerType: string;
   propertyType: string;
+  marketType: string;
   vendor: string;
 }

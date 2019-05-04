@@ -29,8 +29,8 @@ export class PricePredictionService {
   private countOfferPrice(c: PricePredictionCoefficients, o: Offer): number {
     return c.area * o.area
       + c.numberOfRooms * o.numberOfRooms
-      + c.floor * o.floor
-      + c.yearOfConstruction * o.yearOfConstruction;
+      + c.floor * (!!o.floor ? o.floor : 0)
+      + c.marketType * (o.marketType === 'PRIMARY' ? 1 : 0);
   }
 
 }

@@ -13,7 +13,7 @@ export class OfferService {
 
   getOffersByOfferType(offerType: string): Observable<Offer[]> {
     return this.db
-      .collection<Offer>('offers', ref => ref.where('offerType', '==', offerType.toUpperCase()))
+      .collection<Offer>('offers', ref => ref.where('offerType', '==', offerType.toUpperCase()).limit(50))
       .valueChanges()
   }
 
@@ -23,6 +23,10 @@ export class OfferService {
 
   getPropertyTypes(): string[] {
     return ["HOUSE", "FLAT"];
+  }
+
+  getMarketTypes(): string[] {
+    return ["PRIMARY", "SECONDARY"];
   }
 
   getVendors(): string[] {
